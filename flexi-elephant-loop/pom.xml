@@ -4,20 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
+    <parent>
+        <groupId>org.flexi.elephant</groupId>
+        <artifactId>flexi-elephant</artifactId>
+        <version>1.0</version>
+    </parent>
+
     <artifactId>flexi-elephant-loop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>lien6o</groupId>
-            <version>1.0-SNAPSHOT</version>
-            <artifactId>flexi-elephant-common</artifactId>
+            <groupId>org.flexi-elephant</groupId>
+            <artifactId>flexi-elephant-event</artifactId>
         </dependency>
     </dependencies>
 </project>
