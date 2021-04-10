@@ -1,17 +1,19 @@
 package com.flexi.elephant.loop.threadpool;
 
+import com.flexi.elephant.event.DirectExecutor;
+
 import java.util.concurrent.Executor;
 
 /**
  * @author Lien6o
  * @date 2021/4/10 3:53 下午
  */
-public class ThreadPoolModel {
+public class ExecutorSelectors {
 
-    public static class CommonPool implements ExecutorSelector {
+    public static class SerializationPool implements ExecutorSelector {
         @Override
         public Executor getExecutor() {
-            return null;
+            return DirectExecutor.INSTANCE;
         }
     }
 

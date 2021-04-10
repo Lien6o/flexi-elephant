@@ -18,5 +18,9 @@
             <groupId>org.flexi-elephant</groupId>
             <artifactId>flexi-elephant-event</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.flexi-elephant</groupId>
+            <artifactId>flexi-elephant-common</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -8,9 +8,9 @@ import java.util.ServiceLoader;
  */
 public class SpiLoopSupport {
 
-    public static Loop getLoop() {
-        ServiceLoader<Loop> loopServiceLoader = ServiceLoader.load(Loop.class);
-        for (Loop loop : loopServiceLoader) {
+    public static EventLoop getLoop() {
+        ServiceLoader<EventLoop> loopServiceLoader = ServiceLoader.load(EventLoop.class);
+        for (EventLoop loop : loopServiceLoader) {
             return loop;
         }
         return null;
