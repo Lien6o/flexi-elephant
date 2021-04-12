@@ -1,0 +1,3 @@
+com.flexi.elephant.rpc.netty.serialize.impl.MetadataSerializer
+com.flexi.elephant.rpc.netty.serialize.impl.StringSerializer
+com.flexi.elephant.rpc.netty.serialize.impl.RpcRequestSerializer
