@@ -16,3 +16,7 @@
 
 ## loop
 SPI使用
+
+## event
+1. getEvent
+2. onEvent

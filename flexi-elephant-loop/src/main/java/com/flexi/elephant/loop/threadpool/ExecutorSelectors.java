@@ -10,17 +10,27 @@ import java.util.concurrent.Executor;
  */
 public class ExecutorSelectors {
 
-    public static class SerializationPool implements ExecutorSelector {
+
+    public static class External implements ExecutorSelector {
+
+        @Override
+        public Executor getExecutor() {
+            return null;
+        }
+    }
+
+    public static class Serialization implements ExecutorSelector {
+
         @Override
         public Executor getExecutor() {
             return DirectExecutor.INSTANCE;
         }
     }
 
-    public static class CustomPool implements ExecutorSelector {
+    public static class Customize implements ExecutorSelector {
         private final Executor executor;
 
-        CustomPool(Executor executor) {
+        Customize(Executor executor) {
             this.executor = executor;
         }
 

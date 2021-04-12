@@ -1,7 +1,13 @@
 package com.flexi.elephant.loop;
 
-import com.flexi.elephant.loop.threadpool.ExecutorSelector;
+import com.flexi.elephant.common.util.CollectionUtil;
+import com.flexi.elephant.event.Event;
+import com.flexi.elephant.event.EventCollector;
+import com.flexi.elephant.event.EventConsumerStatus;
+import com.flexi.elephant.event.EventListener;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -13,41 +19,73 @@ public class EventLoopEngine implements LifeCycle, EventLoop {
 
     private CountDownLatch threadStartWait;
 
-    private ExecutorSelector executorSelector;
+    private final EventCollector eventCollector;
 
+    private final EventListener eventListener;
 
-    private EventLoopEngine(ExecutorSelector executorSelector) {
-        this.executorSelector = executorSelector;
-    }
+    private Collection<Event> eventList;
 
-    public EventLoopEngine() {
-        /* no-op */
-    }
-
-    private static void start() {
-        // FIXME: 2021/4/10
+    private EventLoopEngine(EventCollector executorSelector, EventListener eventListener) {
+        this.eventListener = eventListener;
+        this.eventCollector = executorSelector;
     }
 
 
-    public static EventLoopEngineBuilder builder() {
-        return new EventLoopEngineBuilder();
+    public static void main(String[] args) {
+        EventLoopEngine build = EventLoopEngine.builder(() -> new ArrayList<>(), event -> EventConsumerStatus.FAILURE).build();
+
+
+        EventCollector eventCollector = new EventCollector() {
+            @Override
+            public Collection<Event> collect() {
+                return null;
+            }
+        };
+
+        Collection<Event> collect = eventCollector.collect();
+    }
+
+    /**
+     * builder
+     */
+    public static EventLoopEngineBuilder builder(EventCollector eventCollector, EventListener eventListener) {
+        return new EventLoopEngineBuilder(eventCollector, eventListener);
+
+
     }
 
 
-    private static class EventLoopEngineBuilder {
-        private EventLoopEngineBuilder() {
-            /* no-op */
+    /**
+     * start
+     */
+    private void start() {
+        while (true) {
+            if (CollectionUtil.isEmpty(eventList)) {
+                return;
+            }
+            for (Event event : eventList) {
+                eventListener.onEvent(event);
+            }
         }
+    }
 
-        private ExecutorSelector executorSelector;
 
-        private EventLoopEngineBuilder executorSelector(ExecutorSelector executorSelector) {
-            this.executorSelector = executorSelector;
-            return this;
+    /**
+     * Builder
+     */
+    private static class EventLoopEngineBuilder {
+
+        private final EventCollector eventCollector;
+
+        private final EventListener eventListener;
+
+        public EventLoopEngineBuilder(EventCollector eventCollector, EventListener eventListener) {
+            this.eventCollector = eventCollector;
+            this.eventListener = eventListener;
         }
 
         public EventLoopEngine build() {
-            return new EventLoopEngine(this.executorSelector);
+            return new EventLoopEngine(this.eventCollector, this.eventListener);
         }
     }
 

@@ -11,16 +11,16 @@
     </parent>
 
     <artifactId>flexi-elephant-loop</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
-            <groupId>org.flexi-elephant</groupId>
-            <artifactId>flexi-elephant-event</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flexi-elephant</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>flexi-elephant-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>flexi-elephant-event</artifactId>
         </dependency>
     </dependencies>
 </project>
