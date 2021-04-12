@@ -4,14 +4,12 @@ import java.util.concurrent.Executor;
 
 /**
  * @author Lien6o
- * @description some desc
- * @email lienbo@meituan.com
  * @date 2021/4/10 4:43 下午
  */
 public enum DirectExecutor implements Executor {
     INSTANCE;
 
-    private DirectExecutor() {
+    DirectExecutor() {
     }
 
     public void execute(Runnable command) {
@@ -19,7 +17,7 @@ public enum DirectExecutor implements Executor {
     }
 
     public String toString() {
-        return " directExecutor()";
+        return "directExecutor()";
     }
 
 }

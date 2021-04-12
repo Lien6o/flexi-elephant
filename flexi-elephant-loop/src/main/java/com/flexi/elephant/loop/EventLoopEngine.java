@@ -15,7 +15,6 @@ import java.util.concurrent.CountDownLatch;
  * @date 2021/4/6 3:49 下午
  */
 public class EventLoopEngine implements LifeCycle, EventLoop {
-    private LoopConfig config;
 
     private CountDownLatch threadStartWait;
 
@@ -32,7 +31,7 @@ public class EventLoopEngine implements LifeCycle, EventLoop {
 
 
     public static void main(String[] args) {
-        EventLoopEngine build = EventLoopEngine.builder(() -> new ArrayList<>(), event -> EventConsumerStatus.FAILURE).build();
+        EventLoopEngine build = EventLoopEngine.builder(ArrayList::new, event -> EventConsumerStatus.FAILURE).build();
 
 
         EventCollector eventCollector = new EventCollector() {
@@ -90,7 +89,7 @@ public class EventLoopEngine implements LifeCycle, EventLoop {
     }
 
     @Override
-    public void init() throws Exception {
+    public void init() {
 //        Runnable target = new Runnable() {
 //            @Override
 //            public void run() {
@@ -109,7 +108,7 @@ public class EventLoopEngine implements LifeCycle, EventLoop {
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
 
     }
 
