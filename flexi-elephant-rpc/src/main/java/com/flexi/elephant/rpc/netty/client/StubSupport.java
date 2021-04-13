@@ -10,8 +10,6 @@ import com.flexi.elephant.rpc.netty.transport.command.ResponseHeader;
 
 /**
  * @author Lien6o
- * @description some desc
- * @email lienbo@meituan.com
  * @date 2021/4/13 2:57 下午
  */
 public class StubSupport {
