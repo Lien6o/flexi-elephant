@@ -14,12 +14,20 @@
 package com.flexi.elephant.rpc.netty.transport.command;
 
 /**
- *  
- *   
+ * 请求头
  */
 public class Header {
+    /**
+     * 请求id
+     */
     private int requestId;
+    /**
+     * 版本
+     */
     private int version;
+    /**
+     * 类型
+     */
     private int type;
 
     public Header() {}

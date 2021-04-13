@@ -13,15 +13,19 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
+ *
  */
 public class Client {
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
-    public static void main(String [] args) throws IOException {
+
+    public static void main(String[] args) throws IOException {
         String serviceName = HelloService.class.getCanonicalName();
         File tmpDirFile = new File(System.getProperty("java.io.tmpdir"));
         File file = new File(tmpDirFile, "simple_rpc_name_service.data");
         String name = "Master MQ";
-        try(RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
+
+
+        try (RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
             NameService nameService = rpcAccessPoint.getNameService(file.toURI());
             assert nameService != null;
             URI uri = nameService.lookupService(serviceName);
