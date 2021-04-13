@@ -1,6 +1,5 @@
 package com.flexi.elephant.rpc.client;
 
-
 import com.flexi.elephant.rpc.HelloService;
 import com.flexi.elephant.rpc.api.NameService;
 import com.flexi.elephant.rpc.api.RpcAccessPoint;
@@ -13,7 +12,8 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- *
+ * @author LiYue
+ * Date: 2019/9/20
  */
 public class Client {
     private static final Logger logger = LoggerFactory.getLogger(Client.class);
@@ -23,8 +23,6 @@ public class Client {
         File tmpDirFile = new File(System.getProperty("java.io.tmpdir"));
         File file = new File(tmpDirFile, "simple_rpc_name_service.data");
         String name = "Master MQ";
-
-
         try (RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
             NameService nameService = rpcAccessPoint.getNameService(file.toURI());
             assert nameService != null;

@@ -66,9 +66,9 @@ public class NettyRpcAccessPoint implements RpcAccessPoint {
 
     @Override
     public void close() {
-        if (null != server) {
-            server.stop();
-        }
-        client.close();
+//        if (null != server) {
+//            server.stop();
+//        }
+//        client.close();
     }
 }
