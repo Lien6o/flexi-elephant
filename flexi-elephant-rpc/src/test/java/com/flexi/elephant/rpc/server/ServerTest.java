@@ -6,7 +6,6 @@ import java.io.Closeable;
 /**
  * @author Lien6o
  * @description some desc
- * @email lienbo@meituan.com
  * @date 2021/4/12 8:34 下午
  */
 class ServerTest {

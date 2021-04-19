@@ -4,8 +4,6 @@ import java.util.Collection;
 
 /**
  * @author Lien6o
- * @description some desc
- * @email lienbo@meituan.com
  * @date 2021/4/12 10:35 上午
  */
 public class CollectionUtil {
